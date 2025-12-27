@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <div className="container">
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '2.5rem', fontWeight: '800', margin: 0 }}>📚 My Library</h1>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: '800', margin: 0 }}>My Library</h1>
         <button style={{ backgroundColor: '#4f46e5', color: 'white', padding: '12px 24px', borderRadius: '8px', border: 'none', fontWeight: '600', cursor: 'pointer' }}>
           + Add New Book
         </button>
