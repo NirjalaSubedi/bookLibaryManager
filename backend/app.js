@@ -41,6 +41,15 @@ app.post("/createbook", async (req, res) => {
     }
 });
 
-
-
-
+app.get("/getbooks",async(req,res)=>{
+    const books=await Book.find()
+    if(books.lemgth==0){
+        return res.status(404).json({
+            message:"No Books found"
+        })
+    }
+    return res.status(200).json({
+        message:"Books retruived success",
+        data:books
+    })
+})
