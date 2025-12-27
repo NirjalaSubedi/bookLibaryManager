@@ -1,3 +1,5 @@
+const cors = require('cors');
+app.use(cors());
 const {databaseconnection} =require ('./db_connect/databaseconnection');
 databaseconnection();
 const express=require('express');
