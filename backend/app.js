@@ -68,3 +68,16 @@ app.get("/getsinglebook/:id",async(req,res)=>{
         data:book
       })
 })
+
+app.delete("/deletebook/:id",async(req,res)=>{
+  const {id}=req.params
+  const book=await Book.findByIdAndDelete(id)
+  if(!book){
+    return res.status(404).json({
+      message:"Book not found"
+    })
+  }
+  res.status(200).json({
+    message:"Book deleted Successfully"
+  })
+})
