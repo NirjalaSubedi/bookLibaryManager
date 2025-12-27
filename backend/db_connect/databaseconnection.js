@@ -1,6 +1,6 @@
 const mongoose=require('mongoose');
 exports.databaseconnection= async()=>{
-    const user=process.env.MONGO_USER||'nirjalasubedi944@gmail.com';
+    const user=process.env.MONGO_USER||'nirjalasubedi944';
     const pass=process.env.MONGO_PASS||'nirjala#2233';
     const host = process.env.MONGO_HOST || 'cluster0.zni3nwp.mongodb.net';
     const options = process.env.MONGO_OPTIONS || '?appName=Cluster0';
@@ -9,7 +9,7 @@ exports.databaseconnection= async()=>{
     const safepass=encodeURIComponent(pass);
     const dbname='bookLibraryManagement';
 
-    const uri=`mongodb+srv://${safeuser}:${safepass}@${host}/${dbname}${options}`;
+    const uri=`mongodb+srv://${safeuser}:${safepass}@${host}/${dbname}/${options}`;
 
     try{
        await  mongoose.connect(uri);
