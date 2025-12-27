@@ -11,28 +11,35 @@ app.listen(3000,()=>{
     console.log("running at 3000 port");
 })
 
-app.post("/createbook",async(req,res)=>{
-    const {title,author,description,isAvailable,createdAt}=req.body;
-    console.log(title,author,description,isAvailable,createdAt)
-    if(!title||!author||!isAvailable||!createdAt){
-        return res.status(400).json({
-            message:"enter all required fields"
+app.post("/createbook", async (req, res) => {
+    try {
+        const { title, author, description, isAvailable, createdAt } = req.body || {};
+        
+        if (!title || !author) {
+            return res.status(400).json({ message: "Title and Author are required" });
+        }
+
+        const response = await Book.create({
+            title,
+            author,
+            description,
+            isAvailable,
+            createdAt
+        });
+
+        res.status(200).json({
+            message: "book created successfully",
+            data: response
+        });
+
+    } catch (error) {
+        console.log("Database Error:", error.message);
+        res.status(500).json({
+            message: "Internal Server Error",
+            error: error.message
         });
     }
-
-    const response=await Book.create({
-        title:title,
-        author:author,
-        description:description,
-        isAvailable:isAvailable,
-        createdAt:createdAt
-    });
-
-    res.status(200).json({
-        message:"book crested successfully",
-        data:req.body
-    })
-})
+});
 
 
 

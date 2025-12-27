@@ -9,7 +9,7 @@ exports.databaseconnection= async()=>{
     const safepass=encodeURIComponent(pass);
     const dbname='bookLibraryManagement';
 
-    const uri=`mongodb+srv://${safeuser}:${safepass}@${host}/${dbname}/${options}`;
+    const uri=`mongodb+srv://${safeuser}:${safepass}@${host}/${dbname}${options}`;
 
     try{
        await  mongoose.connect(uri);
