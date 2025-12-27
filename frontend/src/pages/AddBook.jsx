@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const AddBook = () => {
-  // Form ko data state ma store gareko
   const [data, setData] = useState({ 
     title: '', 
     author: '', 
@@ -14,12 +13,11 @@ const AddBook = () => {
   const navigate = useNavigate();
 
   const handleAdd = async (e) => {
-    e.preventDefault(); // Page refresh huna nidine
+    e.preventDefault();
     try {
-      // Backend ko API call gareko
       await axios.post('http://localhost:3000/createbook', data);
-      alert("Book Added Successfully! 🎉");
-      navigate('/'); // Book thapepachi Home page ma farkine
+      alert("Book Added Successfully!");
+      navigate('/'); 
     } catch (err) {
       console.error(err);
       alert("Error: Book add garna sakiena.");
@@ -28,8 +26,8 @@ const AddBook = () => {
 
   return (
     <div className="container" style={{ maxWidth: '600px', marginTop: '50px' }}>
-      <button onClick={() => navigate('/')} style={{ marginBottom: '20px', cursor: 'pointer' }}>
-        ← Back to Library
+      <button onClick={() => navigate('/')} style={{ marginBottom: '20px', cursor: 'pointer',border:'none' }}>
+        Back to Library
       </button>
       
       <div className="book-card" style={{ padding: '30px' }}>
@@ -79,7 +77,7 @@ const AddBook = () => {
               fontWeight: 'bold',
               fontSize: '1rem'
             }}>
-            Save to Database
+            Save
           </button>
         </form>
       </div>
