@@ -5,9 +5,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 const EditBook = () => {
   const [data, setData] = useState({ title: '', author: '', description: '', isAvailable: true });
   const navigate = useNavigate();
-  const { id } = useParams(); // URL bata ID nikaleko
+  const { id } = useParams(); 
 
-  // 1. Purano data fetch garne (Auto-fill ko lagi)
   useEffect(() => {
     const fetchSingleBook = async () => {
       try {
@@ -20,7 +19,6 @@ const EditBook = () => {
     fetchSingleBook();
   }, [id]);
 
-  // 2. Update logic
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
@@ -34,7 +32,7 @@ const EditBook = () => {
 
   return (
     <div className="container" style={{ maxWidth: '500px' }}>
-      <h2>✏️ Edit Book</h2>
+      <h2>Edit Book</h2>
       <form onSubmit={handleUpdate} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
         <input type="text" value={data.title} placeholder="Book Title" 
                style={{ padding: '12px', borderRadius: '8px', border: '1px solid #ddd' }}
