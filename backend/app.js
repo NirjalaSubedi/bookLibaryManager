@@ -53,3 +53,18 @@ app.get("/getbooks",async(req,res)=>{
         data:books
     })
 })
+
+
+app.get("/getsinglebook/:id",async(req,res)=>{
+    const {id}=req.params;
+    const book=await Book.findById(id);
+    if(!book){
+      return res.status(404).json({
+        message:"Book not found"
+      })
+    }
+    return res.status(200).json({
+        message:"Book found successfully",
+        data:book
+      })
+})
