@@ -23,5 +23,5 @@ const bigSchema=new mongoose.Schema({
         default:Date.now
     }
 });
-const Book=mongoose('Book',bigSchema);
+const Book=mongoose.model('Book',bigSchema);
 module.exports=Book;
