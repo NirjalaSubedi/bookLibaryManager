@@ -81,3 +81,25 @@ app.delete("/deletebook/:id",async(req,res)=>{
     message:"Book deleted Successfully"
   })
 })
+
+app.patch("/updatebook/:id",async(req,res)=>{
+    const {id}=req.params;
+    const {title,author,description,isAvailable,createdAt}=req.body;
+
+    const book=await Book.findByIdAndUpdate(id,{
+      title,
+      author,
+      description,
+      isAvailable,
+      createdAt
+    },{new:true})
+    if(!Book){
+      return res.status(404).json({
+        message:"Book not Found"
+      })
+    }
+    res.status(200).json({
+      message:"Book Found Successfully"
+    })
+  })
+
