@@ -21,7 +21,11 @@ const bigSchema=new mongoose.Schema({
     createdAt:{
         type:Date,
         default:Date.now
+    },
+    pubishYear:{
+        type:String
     }
+
 });
 const Book=mongoose.model('Book',bigSchema);
 module.exports=Book;

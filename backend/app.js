@@ -16,10 +16,10 @@ app.listen(3000,()=>{
 
 app.post("/createbook", async (req, res) => {
     try {
-        const { title, author, description, isAvailable, createdAt } = req.body || {};
+        const { title, author, description, isAvailable, createdAt,publishyear } = req.body || {};
         
         if (!title || !author) {
-            return res.status(400).json({ message: "Title and Author are required" });
+            return res.status(400).json({ message: "Title Author are required" });
         }
 
         const response = await Book.create({
@@ -27,7 +27,8 @@ app.post("/createbook", async (req, res) => {
             author,
             description,
             isAvailable,
-            createdAt
+            createdAt,
+            publishyear
         });
 
         res.status(200).json({
@@ -88,14 +89,15 @@ app.delete("/deletebook/:id",async(req,res)=>{
   app.patch("/updatebook/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        const { title, author, description, isAvailable, createdAt } = req.body;
+        const { title, author, description, isAvailable, createdAt,publishYear } = req.body;
 
         const book = await Book.findByIdAndUpdate(id, {
             title,
             author,
             description,
             isAvailable,
-            createdAt
+            createdAt,
+            publishYear
         }, { new: true });
 
         if (!book) {
